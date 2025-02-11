@@ -14,10 +14,18 @@
     "windows": [
       {
         "title": "kyroshi",
-        "width": 800,
-        "height": 600
+        "maximized": true,
+        "center": true,
+        "hiddenTitle": true,
+        "resizable": false,
+        "fullscreen": false,
+        "alwaysOnTop": true,
+        "decorations": false,
+        "transparent": true,
+        "visibleOnAllWorkspaces": false
       }
     ],
+
     "security": {
       "csp": null
     }
