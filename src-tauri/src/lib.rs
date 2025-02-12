@@ -1,6 +1,7 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 use serde::{Serialize, Deserialize};
 use rand::Rng;
+use tauri::Manager;
 
 // Position struct to represent x, y coordinates
 #[derive(Debug, Serialize, Deserialize)]
@@ -33,6 +34,13 @@ fn greet(name: &str) -> String {
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
+        .setup(|app| {
+            // Get the main window
+            let window = app.get_webview_window("main").unwrap();
+            // Enable click-through
+            window.set_ignore_cursor_events(true)?;
+            Ok(())
+        })
         .invoke_handler(tauri::generate_handler![
             greet,
             get_random_position
